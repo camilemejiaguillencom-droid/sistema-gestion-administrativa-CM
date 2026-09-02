@@ -1,0 +1,41 @@
+<h2>Gastos</h2>
+<div class="card">
+  <form class="filters" method="get" action="/gastos">
+    <label>Desde <input type="date" name="from" value="{{from}}"></label>
+    <label>Hasta <input type="date" name="to" value="{{to}}"></label>
+    <button type="submit">Consultar</button>
+    <a class="btn btn-light" href="/gastos">Ver todo</a>
+  </form>
+  <p><strong>Total gastos:</strong> {{total}}</p>
+</div>
+<div class="card">
+  <h3>Registrar gasto</h3>
+  <form class="row" method="post" action="/gastos">
+    <label>Fecha <input type="date" name="date" required></label>
+    <label>Descripción <input name="description" required></label>
+    <label>Categoría
+      <select name="category">{{#each categories}}<option>{{this}}</option>{{/each}}</select>
+    </label>
+    <label>Valor <input type="number" step="0.01" name="amount" min="0" required></label>
+    <label>Observación <input name="notes"></label>
+    <button type="submit">Guardar</button>
+  </form>
+</div>
+<div class="card table-wrap">
+  <table>
+    <thead><tr><th>Fecha</th><th>Descripción</th><th>Categoría</th><th>Valor</th><th>Obs.</th><th></th></tr></thead>
+    <tbody>
+      {{#each items}}
+      <tr>
+        <td>{{date}}</td><td>{{description}}</td><td>{{category}}</td>
+        <td>{{money amount}}</td><td>{{notes}}</td>
+        <td class="actions">
+          <form method="post" action="/gastos/{{id}}/eliminar" onsubmit="return confirm('¿Eliminar gasto?')">
+            <button class="btn-danger" type="submit">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

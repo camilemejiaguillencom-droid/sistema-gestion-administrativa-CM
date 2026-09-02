@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}} · Papelería</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h1>Gestión administrativa<br/>Papelería</h1>
+      <a href="/" class="{{#if (eq title 'Resumen')}}active{{/if}}">Resumen</a>
+      <a href="/productos" class="{{#if (eq title 'Productos')}}active{{/if}}">Productos</a>
+      <a href="/ventas" class="{{#if (eq title 'Ventas')}}active{{/if}}">Ventas</a>
+      <a href="/gastos" class="{{#if (eq title 'Gastos')}}active{{/if}}">Gastos</a>
+      <a href="/tareas" class="{{#if (eq title 'Tareas')}}active{{/if}}">Tareas</a>
+    </aside>
+    <main>{{{body}}}</main>
+  </div>
+</body>
+</html>

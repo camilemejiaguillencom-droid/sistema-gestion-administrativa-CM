@@ -1,0 +1,27 @@
+<h2>Editar tarea</h2>
+<div class="card">
+  {{#if item}}
+  <form class="row" method="post" action="/tareas/{{item.id}}">
+    <label>Nombre <input name="name" value="{{item.name}}" required></label>
+    <label>Descripción <input name="description" value="{{item.description}}"></label>
+    <label>Fecha <input type="date" name="date" value="{{item.date}}" required></label>
+    <label>Fecha límite <input type="date" name="dueDate" value="{{item.dueDate}}" required></label>
+    <label>Prioridad
+      <select name="priority">
+        {{#each priorities}}
+        <option {{#if (eq this ../item.priority)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label>Estado
+      <select name="status">
+        {{#each statuses}}
+        <option {{#if (eq this ../item.status)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <button type="submit">Actualizar</button>
+    <a class="btn btn-light" href="/tareas">Volver</a>
+  </form>
+  {{else}}<p>No encontrada.</p>{{/if}}
+</div>
