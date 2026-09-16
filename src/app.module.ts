@@ -15,7 +15,11 @@ import { TasksService } from './tasks.service';
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: join(__dirname, '..', 'data', 'papeleria.sqlite'),
+      database:
+        process.env.DB_PATH ||
+        (process.env.VERCEL
+          ? '/tmp/papeleria.sqlite'
+          : join(__dirname, '..', 'data', 'papeleria.sqlite')),
       entities: [Product, Sale, Expense, Task],
       synchronize: true,
     }),
