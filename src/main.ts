@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { existsSync, mkdirSync } from 'fs';
-import * as hbs from 'hbs';
+import hbs from 'hbs';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
